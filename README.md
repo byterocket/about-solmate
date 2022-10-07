@@ -1,4 +1,4 @@
-# Introduction to the `solmate` Contracts
+# About `solmate`
 
 ## History
 
