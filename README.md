@@ -20,7 +20,8 @@ Copied from README:
 ```
 
 Also:
-- Little to no documentation
+
+![](./about-docs.png)
 
 ### Auditing Projects using `solmate`:
 
