@@ -34,7 +34,7 @@ project uses them correctly.
 
 `OpenZeppelin`:
 - Want to make it as hard as possible to misuse the contracts
-    - Said by Nicolas Venturo in the `Devs Do Something` podcast
+    - Said by [Nicolas Venturo](https://twitter.com/mrnventuro) in the [Devs Do Something](https://www.devsdosomething.fm/episodes/nicolas-venturo-solidity-engineering-at-balancer-labs-the-dangers-of-gas-golfing) podcast
 - -> Useful for every Solidity developer
 
 `solmate`:
@@ -80,19 +80,24 @@ getting inspired from a ton of high quality and battle-proved projects.
 
 ## Comparison of Documentation: `solmate` vs `OpenZeppelin`
 
-See `solmate/utils/ReentrancyGuard.sol` vs `OpenZeppelin/contracts/security/ReentrancyGuard.sol`.
+See [solmate's ReentrancyGuard](./solmate/src/utils/ReentrancyGuard.sol) vs [OpenZeppelin's ReentrancyGuard](./openzeppelin-contracts/contracts/security/ReentrancyGuard.sol).
 
-`OpenZeppelin` provides a lot of in-code documentation explaining the
+`OpenZeppelin`:
+
+Provides a lot of in-code documentation explaining the
 reasoning behind decisions (e.g. why are the lock's values `1` and `2`
 instead of `0` and `1`?).
 
-`solmate`: Links to the OZ repo :)
+`solmate`:
+
+Links to the OZ repo :)
 
 ## `auth/Auth.sol`
 
-Check comments inside code.
+Check comments in code: [Auth](./solmate/src/auth/Auth.sol)
 
-Problem:
+**Problem**:
+
 If the `Authorizer` instance is compromised, the whole `Auth` system is
 compromised because it can make `canCall()` calls always fail (e.g. by using
 all available gas).
@@ -101,13 +106,23 @@ Even the owner can not change the `Authority` anymore!
 
 ## `tokens/ERC20.sol` & `tokens/ERC721.sol`
 
-Check comments inside the code.
+Check comments inside the code:
+- [solmate's ERC20](./solmate/src/tokens/ERC20.sol)
+- [solmate's MockERC20](./solmate/src/test/utils/mocks/MockERC20.sol)
+- [OpenZeppelin's ERC20](./openzeppelin-contracts/contracts/token/ERC20/ERC20.sol)
+- [solmate's ERC721](./solmate/src/tokens/ERC721.sol)
+- [OpenZeppelin's ERC721](./openzeppelin-contracts/contracts/token/ERC721/ERC721.sol)
 
-Problem:
+**Problem**:
+
 Invariant is not enforced in order to save gas and give downstream contracts,
 i.e. user/developers, more power over internal state.
-BUT with great power comes great responsibility 🕷
+
+Remember: with great power comes great responsibility 🕷
 
 ## `utils/SafeTransferLib` or: How I learned to stop worrying and love assembly 💣
 
-Check comments inside the code.
+Check comments inside the code:
+- [solmate's SafeTransferLib](./solmate/src/utils/SafeTransferLib.sol)
+- [OpenZeppelin's SafeERC20](./openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol)
+- [OpenZeppelin's Address](./openzeppelin-contracts/contracts/utils/Address.sol)
