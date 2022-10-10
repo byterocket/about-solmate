@@ -33,26 +33,6 @@ abstract contract Auth {
         // Checking if the caller is the owner only after calling the authority saves gas in most cases, but be
         // aware that this makes protected functions uncallable even to the owner if the authority is out of order.
         return (address(auth) != address(0) && auth.canCall(user, address(this), functionSig)) || user == owner;
-        /**
-         @audit                                ^^^^ external call                                     ^^^ owner check afterwards
-
-         What if external call always reverts or uses all available gas?
-         => No protected functions are callable anymore
-              => Even for owner!
-         => Owner can not change Authority anymore
-              => System is stuck with compromised/broken Authority
-
-         Possible "fix": Switch execution order, i.e. first check if user is owner, then do external call
-
-         Note that this problem does not exist in original DSAuth!
-
-         Why implemented like this?
-         => Saves gas on _average_
-              => Average case: Caller is not owner
-
-         Remember:
-         solmate assumes that the Authority instance is never compromised/broken!
-        */
     }
 
     function setAuthority(Authority newAuthority) public virtual {

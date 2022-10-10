@@ -92,18 +92,6 @@ instead of `0` and `1`?).
 
 Links to the OZ repo :)
 
-## `auth/Auth.sol`
-
-Check comments in code: [Auth](./solmate/src/auth/Auth.sol)
-
-**Problem**:
-
-If the `Authorizer` instance is compromised, the whole `Auth` system is
-compromised because it can make `canCall()` calls always fail (e.g. by using
-all available gas).
-
-Even the owner can not change the `Authority` anymore!
-
 ## `tokens/ERC20.sol` & `tokens/ERC721.sol`
 
 Check comments inside the code:

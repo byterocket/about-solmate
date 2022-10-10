@@ -113,7 +113,7 @@ library SafeERC20 {
             // Return data is optional
             require(abi.decode(returndata, (bool)), "SafeERC20: ERC20 operation did not succeed");
             // @audit Same as in solmate:
-            //        Either no return data OR return data is bool true value.
+            //        Either no return data or return data is bool true value.
         }
     }
 }

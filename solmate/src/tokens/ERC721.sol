@@ -31,6 +31,7 @@ abstract contract ERC721 {
     mapping(uint256 => address) internal _ownerOf;
 
     mapping(address => uint256) internal _balanceOf;
+    // @audit                   ^^^^^^^^ Can be mutated in downstream contract.
 
     function ownerOf(uint256 id) public view virtual returns (address owner) {
         require((owner = _ownerOf[id]) != address(0), "NOT_MINTED");
@@ -64,14 +65,6 @@ abstract contract ERC721 {
     //////////////////////////////////////////////////////////////*/
 
     function approve(address spender, uint256 id) public virtual {
-        /**
-         @audit 1: Token may not exist.
-         @audit 2: Missing check whether spender == msg.sender, i.e. approving
-                   token to yourself.
-         => Both fine per standard though!
-         => 1. Enables new use-cases (approve token already knowing it will
-               be minted in the future) but has new security implications.
-         */
         address owner = _ownerOf[id];
 
         require(msg.sender == owner || isApprovedForAll[owner][msg.sender], "NOT_AUTHORIZED");

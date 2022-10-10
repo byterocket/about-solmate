@@ -35,7 +35,7 @@ import "../../utils/Context.sol";
 contract ERC20 is Context, IERC20, IERC20Metadata {
 
     mapping(address => uint256) private _balances;
-    // @audit                   ^^^^^^^ All state is private.
+    // @audit                   ^^^^^^^ All state is private!
     //                                  Not possible to mutate directly in dowstream contract
     //                                  Only way: Use `_mint()` and `_burn()` functions
 

@@ -69,9 +69,6 @@ abstract contract ERC20 {
     //////////////////////////////////////////////////////////////*/
 
     function approve(address spender, uint256 amount) public virtual returns (bool) {
-        /**
-         @audit Can approve zero address.
-         */
         allowance[msg.sender][spender] = amount;
 
         emit Approval(msg.sender, spender, amount);

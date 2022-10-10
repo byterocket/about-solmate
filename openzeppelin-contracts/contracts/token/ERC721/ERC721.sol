@@ -31,6 +31,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     // Mapping owner address to token count
     mapping(address => uint256) private _balances;
+    // @audit                   ^^^^^^^ All state is private.
 
     // Mapping from token ID to approved address
     mapping(uint256 => address) private _tokenApprovals;
