@@ -1,5 +1,9 @@
 # About `solmate`
 
+This repository was created for **EVM Expeditions #01**, where [merkleplant](https://github.com/pmerkleplant) gave an intro to solmate. You can find the video here:
+
+[**👉 Click here for the video 👈**](https://youtu.be/IXzY6yUo1t4)
+
 ## History
 
 - Written by [t11s](https://xn--2-kmb.com/)
